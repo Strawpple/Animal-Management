@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <header>
+      <%- include('../partials/header'); %>
+    </header>
+    <body>
+        <div>
+            <h2>Adoption Form</h2>
+            <form action="/adoptionform" method="POST">
+
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" name="name" placeholder="Name" aria-label="Name">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" name="address" placeholder="Address" aria-label="Address">
+                </div>
+              </div>
+              <br>
+                  <select class="form-select" aria-label="Default select example">
+                    <option name="value" selected>Type of pet</option>
+                    
+
+                    
+                    
+                  </select>
+
+                  
+
+                  <br>
+                  <label for="basic-url" class="form-label">URL Photo</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon3">https://</span>
+                      <input type="text" class="form-control" name="photo_url" aria-describedby="basic-addon3">
+                    </div>
+                    
+
+
+                
+              </div>
+
+            </form>
+
+           
+
+
+      </div>
+    </body>
+</html>
