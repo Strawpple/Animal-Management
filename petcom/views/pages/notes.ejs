@@ -1,5 +1,65 @@
+<!--Adoption notes-->
 
-                    <!-- <% for(var index=0; index < itemData.length; index++){ %>
-                    <option value="<%= itemData[index].data()['label'] %>"><%= itemData[index].data()['label'] %></option>
-                      
-                    <% } %> -->
+<!-- <div class="container"> -->
+    <!-- Content here -->
+    <!-- <p> -->
+      <!-- <h2>List of Pets with details</h2> -->
+      <!-- <% for(var index=0; index < itemData.length; index++){ %> -->
+
+          <!-- <div class="card"> -->
+            <!-- <img src="<%= itemData[index].data()['photo_url'] %>" class="card-img-top" width="50px" height="500px" alt="..."> -->
+            <!-- <div class="card-header"> -->
+              <!-- Name: <%= itemData[index].data()['name'] %> -->
+            <!-- </div> -->
+            <!-- <div class="card-body"> -->
+              <!-- <p class="card-text">Address: <%= itemData[index].data()['address'] %></p> -->
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            <!-- </div> -->
+          <!-- </div> -->
+          
+          <!-- <% } %> -->
+    <!-- </p> -->
+  <!-- </div> -->
+
+
+  <!-- <select class="form-select" aria-label="Default select example">
+                                      <option name="value" selected>Type of pet</option>
+                                      
+                                      <% for(var index=0; index < itemData.length; index++){ %>
+                                      <option value="1"><%= itemData[index].data()['pettype'] %></option>
+                                        
+                                      <% } %>
+
+                                      
+                                      
+                                    </select> -->
+
+
+
+                                    <!-- Adopt a Cat Modal
+                <div class="modal fade" id="adoptcatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cats for Adoption</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                              <% for(var index=0; index < itemData.length; index++){ %>
+                                <% if(itemData[index].data()['label'] == 'cat') { %>
+                                  <%= itemData[index].data()['name'] %>
+                                    <% } %>
+                                      <% } %>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div> -->
+                <!--Adopt a Cat End of Modal-->

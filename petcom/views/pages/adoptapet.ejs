@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <body>
+      <header>
+        <%- include('../partials/header'); %>
+      </header>
+
+         <div class="main-content">
+            <!--Start of NavBar-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">Pet Community</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                  <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="adoptapet">Adopt a pet</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="findadonor">Find a Donor</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="donatetoshelter">Donate to a Shelter</a>
+                    </li>
+                    
+                  </ul>
+                </div>
+              </div>
+            </nav>
+            <!--End of NavBar-->
+
+            <div>
+                <!-- <img src="/image/dog-with-gel.png"> -->
+            </div>
+            
+            <!--Add pet for adoption-->
+            <div id="adoption" style="margin-left: 16%; margin-bottom: 5%;">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adoptdogModal">
+                    Add pet for adoption
+                </button>
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#adoptcatModal">
+                    Add Cat for adoption
+                </button> -->
+
+                <!--Adopt a Dog Modal -->
+                <div class="modal fade" id="adoptdogModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add dog for adoption</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+
+                              <form action="/adoptionform" method="POST">
+
+                                <div class="row">
+                                  <div class="col">
+                                    <input type="text" class="form-control" name="name" placeholder="Name" aria-label="Name">
+                                  </div>
+                                  <div class="col">
+                                    <input type="text" class="form-control" name="address" placeholder="Address" aria-label="Address">
+                                  </div>
+                                  <div class="col2" style="margin-top: 10px;">
+                                    <input type="text" class="form-control" name="pettype" placeholder="cat/dog" aria-label="Address">
+                                  </div>
+                                </div>
+                                <br>
+                                    
+
+                                <label for="basic-url" class="form-label">URL Photo</label>
+                                  <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon3">https://</span>
+                                    <input type="text" class="form-control" name="photo_url" aria-describedby="basic-addon3">
+                                  </div>
+
+                                
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <input type="submit" class="btn btn-primary" value="Submit form">
+                                </div>
+  
+                              </form>
+
+                             
+
+
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!--Adopt End of Modal-->
+
+                
+            </div>
+            <!--Adoption-->
+
+
+
+
+         </div>
+    </body>
+</html>

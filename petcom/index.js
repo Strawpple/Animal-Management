@@ -25,14 +25,20 @@ const server = http.createServer((req, res) => {
     if(req.url == '/'){
         url1 += 'pages/index';
         res.statusCode = 200;
-    } else if(req.url == '/adoption'){
-        url1 += 'pages/adoption';
+    } else if(req.url == '/adoptapet'){
+        url1 += 'pages/adoptapet';
         res.statusCode = 200;
-    } else if(req.url == '/account'){
+    }else if(req.url == '/findadonor'){
+        url1 += 'pages/findadonor';
+        res.statusCode = 200;
+    }else if(req.url == '/donatetoshelter'){
+        url1 += 'pages/donatetoshelter';
+        res.statusCode = 200;
+    }else if(req.url == '/account'){
         url1 += 'pages/account';
         res.statusCode = 200;
         res.end();
-    }
+    } 
 
     fs.readFile(url1, (err, data) => {
         if(err){
@@ -46,7 +52,7 @@ const server = http.createServer((req, res) => {
 
 });
 
-var admin = require("firebase-admin");
+// var admin = require("firebase-admin");
 
 // var serviceAccount = require("./animal-adoption-management.json");
 
@@ -121,7 +127,26 @@ app.get('/',function (req, res){
 
 
 
+app.get('/adoptapet',function (req, res){
+    let data = {
+        url: req.url,
+    }
+    res.render('pages/adoptapet', data);
+});
 
+app.get('/donatetoshelter',function (req, res){
+    let data = {
+        url: req.url,
+    }
+    res.render('pages/donatetoshelter', data);
+});
+
+app.get('/findadonor',function (req, res){
+    let data = {
+        url: req.url,
+    }
+    res.render('pages/findadonor', data);
+});
 
 
 app.get('/account',function (req, res){
