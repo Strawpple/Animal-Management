@@ -2,6 +2,10 @@ const express = require('express');
 const http = require('http');
 const fs = require('fs');
 
+//
+
+var session = require('express-session');
+
 const bodyParser = require("body-parser");
 
 var urlencodedParser = bodyParser.urlencoded({extended: false});
@@ -10,10 +14,30 @@ var app = express();
 // app.use(express.static(__dirname + 'styles'));
 // console.log(__dirname);
 
+
 app.use(express.static('assets'));
 const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
+//
+// app.use(session({
+//     resave: false, // don't save session if unmodified
+//     saveUninitialized: false, // don't create session until something stored
+//     secret: 'shhhh, very secret'
+// }));
+
+  
+// app.use(function(req, res, next){
+//     var err = req.session.error;
+//     var msg = req.session.success;
+//     delete req.session.error;
+//     delete req.session.success;
+//     res.locals.message = '';
+//     if (err) res.locals.message = '<p class="msg error">' + err + '</p>';
+//     if (msg) res.locals.message = '<p class="msg success">' + msg + '</p>';
+//     next();
+// });
+//
 
 
 const server = http.createServer((req, res) => {
@@ -52,18 +76,23 @@ const server = http.createServer((req, res) => {
 
 });
 
-// var admin = require("firebase-admin");
+var admin = require("firebase-admin");
 
-// var serviceAccount = require("./animal-adoption-management.json");
+var serviceAccount = require("./pet-community.json");
 
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: "https://animal-adoption-management-default-rtdb.asia-southeast1.firebasedatabase.app"
-// });
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 
-// const db = admin.firestore();
-// // console.log(db.collection('adoption'));
-// const itemcoll = db.collection('adoption');
+const db = admin.firestore();
+// console.log(db.collection('user_account'));
+const itemcoll = db.collection('user_account');
+
+
+//Authorization
+
+//Authorization
+
 
 app.get('/',function (req, res){
     let data = {
@@ -148,12 +177,34 @@ app.get('/findadonor',function (req, res){
     res.render('pages/findadonor', data);
 });
 
+function authentication(email, password){
+    // const useracc = await itemcoll.get();
 
-app.get('/account',function (req, res){
+    // useracc.forEach(doc =>{
+
+    // })
+}
+
+
+app.get('/account', async function (req, res){
+    const useracc = await itemcoll.get();
+
+    // useracc.forEach(doc => {
+    //     console.log(doc.id, '=>', doc.data());
+    // })
+
+
     let data = {
         url: req.url,
+        itemData: useracc.docs,
     }
     res.render('pages/account', data);
+
+    // app.post('/login', function (req, res, next){
+
+    // })
+
+
 });
 
 
