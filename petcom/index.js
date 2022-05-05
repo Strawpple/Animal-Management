@@ -156,6 +156,11 @@ app.get('/',function (req, res){
 
 
 
+/* This is a route handler. It is a function that is called when the server receives a request to the
+specified route (in this case, `/adoptapet`). The function takes two arguments, `req` and `res`.
+`req` is the request object, and `res` is the response object. The function can do anything it wants
+
+with the request and response objects, but it usually sends back a response. */
 app.get('/adoptapet',function (req, res){
     let data = {
         url: req.url,
@@ -163,6 +168,12 @@ app.get('/adoptapet',function (req, res){
     res.render('pages/adoptapet', data);
 });
 
+/* This is a route handler. It is a function that is called when the server receives a request to the
+specified route (in this case, `/donatetoshelter`). The function takes two arguments, `req` and
+`res`.
+`req` is the request object, and `res` is the response object. The function can do anything it wants
+
+with the request and response objects, but it usually sends back a response. */
 app.get('/donatetoshelter',function (req, res){
     let data = {
         url: req.url,
@@ -170,6 +181,10 @@ app.get('/donatetoshelter',function (req, res){
     res.render('pages/donatetoshelter', data);
 });
 
+/* This is a route handler. It is a function that is called when the server receives a request to the
+specified route (in this case, `/findadonor`). The function takes two arguments, `req` and `res`.
+`req` is the request object, and `res` is the response object. The function can do anything it wants
+with the request and response objects, but it usually sends back a response. */
 app.get('/findadonor',function (req, res){
     let data = {
         url: req.url,
@@ -205,9 +220,48 @@ app.get('/account', async function (req, res){
     // })
 
 
+
 });
 
+/* Rendering the registration page. */
+app.get('/registration',function (req, res){
+    let data = {
+        url: req.url,
+    }
+    res.render('pages/registration', data);
 
+    app.post("/registrationform", urlencodedParser,function(req,res){
+        var afirstname = req.body.addfirstname;
+        var alastname = req.body.addlastname;
+        var acontact = req.body.addcontact;
+        var aaddress = req.body.addaddress;
+        var aemail = req.body.addemail;
+        var apassw = req.body.addpass;
+
+        
+        // console.log(req.body);
+        db.collection('user_account').add({
+            first_name: afirstname,
+            last_name: alastname,
+            contact: acontact,
+            address: aaddress,
+            email: aemail,
+            password: apassw
+        })
+        .then(() => {
+            console.log("Document added successfully");
+        })
+        .catch((error) => {
+            console.error("Error", error);
+        })
+
+        res.redirect('/');
+    })
+
+
+});
+
+/* Listening to the port 3000 and localhost. */
 app.listen(3000, 'localhost', () => {
     console.log("Server is running");
 });
