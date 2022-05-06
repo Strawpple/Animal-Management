@@ -41,9 +41,31 @@
             </nav>
             <!--End of NavBar -->
 
+            <div>
+              <!-- Search form -->
+              <div class="container center_div" style="margin-left: 30%; margin-top: 10%;">
+                <form class="d-flex" >
+                  <input class="form-control me-2" style="width: 40%;" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+
+              <label style="margin-top: 5%;">List of Veterinary</label>
+              <br><br>
+              <% for(var index = 0; index < itemData.length; index++){ %>
+              <div class="card">
+                <ul class="list-group list-group-flush">
+                  <%= itemData[index].data()['name'] %> -
+                  <%= itemData[index].data()['address'] %>
+
+                </ul>
+              </div>
+              <% } %>
+            </div>
 
 
 
          </div>
+
     </body>
 </html>

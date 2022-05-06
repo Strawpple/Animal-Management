@@ -86,8 +86,9 @@ admin.initializeApp({
 
 const db = admin.firestore();
 // console.log(db.collection('user_account'));
-const itemcoll = db.collection('user_account');
+const useraccountcoll = db.collection('user_account');
 
+const userestablishmentcoll = db.collection('user_establishment');
 
 //Authorization
 
@@ -185,12 +186,38 @@ app.get('/donatetoshelter',function (req, res){
 specified route (in this case, `/findadonor`). The function takes two arguments, `req` and `res`.
 `req` is the request object, and `res` is the response object. The function can do anything it wants
 with the request and response objects, but it usually sends back a response. */
-app.get('/findadonor',function (req, res){
+app.get('/findadonor', async function (req, res){
+    const establishments = await userestablishmentcoll.get();
+    establishments.forEach(doc => {
+        console.log(doc.id, '=>', doc.data());
+    })
+
     let data = {
         url: req.url,
+        itemData: establishments.docs,
     }
     res.render('pages/findadonor', data);
+
+
 });
+
+// app.get('/adoption', async function (req, res){
+//     // res.render('index');
+//     const foradoption = await itemcoll.get();
+//     // foradoption.forEach(doc => {
+//     //     console.log(doc.id, '=>', doc.data());
+//     // })
+
+//     // console.log(foradoption.docs);
+
+
+    
+//     let data ={
+//         url: req.url,
+//         itemData: foradoption.docs,
+        
+//     }
+//     res.render('pages/adoption', data);
 
 function authentication(email, password){
     // const useracc = await itemcoll.get();
