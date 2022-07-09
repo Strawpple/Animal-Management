@@ -2,6 +2,8 @@ const express = require('express');
 const http = require('http');
 const fs = require('fs');
 const bcrypt = require('bcrypt');
+
+
 // const passport = require('passport');
 
 
@@ -38,6 +40,10 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
+
+// const auth = admin.getAuth();
+
+
 // console.log(db.collection('user_account'));
 
 /* Getting the collections from the database. */
@@ -45,39 +51,15 @@ const useraccountcoll = db.collection('user_account');
 const userestablishmentcoll = db.collection('user_establishment');
 
 
-// const initializePassport = require('./passport-config');
-// initializePassport(passport, emailinput => useraccountcoll
-
-// ) 
 
 
-
-// const initializePassport = require('./passport-config');
-// initializePassport(passport, email => {
-//     return 
-// });
+// Firebase Authentication
 
 
-//
-// app.use(session({
-//     resave: false, // don't save session if unmodified
-//     saveUninitialized: false, // don't create session until something stored
-//     secret: 'shhhh, very secret'
-// }));
 
-  
-// app.use(function(req, res, next){
-//     var err = req.session.error;
-//     var msg = req.session.success;
-//     delete req.session.error;
-//     delete req.session.success;
-//     res.locals.message = '';
-//     if (err) res.locals.message = '<p class="msg error">' + err + '</p>';
-//     if (msg) res.locals.message = '<p class="msg success">' + msg + '</p>';
-//     next();
-// });
-//
 
+
+// 
 
 const server = http.createServer((req, res) => {
     console.log(req.url);
